@@ -3,12 +3,18 @@ import UIKit
 struct ResultAlertPresenter {
     var model: AlertModel
     weak var viewController: UIViewController?
-    weak var delegate: ResultAlertPresenterDelegate?
+
+    init(viewController: UIViewController, model: AlertModel) {
+        self.viewController = viewController
+        self.model = model
+    }
 }
 
 extension ResultAlertPresenter {
     func present() {
-        guard let viewController = viewController else { return }
+        guard let viewController else {
+            return
+        }
 
         let alert = UIAlertController(
             title: model.title,
@@ -19,7 +25,7 @@ extension ResultAlertPresenter {
             title: model.buttonText,
             style: .default
         ) { _ in
-            delegate?.onButtonTapped()
+            model.onButtonTap?()
         }
         alert.addAction(action)
 
