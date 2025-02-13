@@ -2,20 +2,10 @@ import UIKit
 
 struct ResultAlertPresenter {
     var model: AlertModel
-    weak var viewController: UIViewController?
-
-    init(viewController: UIViewController, model: AlertModel) {
-        self.viewController = viewController
-        self.model = model
-    }
 }
 
 extension ResultAlertPresenter {
-    func present() {
-        guard let viewController else {
-            return
-        }
-
+    func present(on viewController: UIViewController) {
         let alert = UIAlertController(
             title: model.title,
             message: model.message,
@@ -24,11 +14,15 @@ extension ResultAlertPresenter {
         let action = UIAlertAction(
             title: model.buttonText,
             style: .default
-        ) { _ in
+        ) {  _ in
             model.onButtonTap?()
         }
+
+        alert.view.accessibilityIdentifier = "Final game"
+
         alert.addAction(action)
 
         viewController.present(alert, animated: true, completion: nil)
     }
 }
+

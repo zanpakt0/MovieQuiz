@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="YS Display-Bold.ttf">
+            <string>YSDisplay-Bold</string>
+        </array>
         <array key="YS Display-Medium.ttf">
             <string>YSDisplay-Medium</string>
         </array>
@@ -44,12 +47,12 @@
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6FF-j9-xuY" userLabel="Preview Image">
                                         <rect key="frame" x="0.0" y="43.5" width="374" height="561"/>
-                                        <color key="backgroundColor" name="White"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6FF-j9-xuY" secondAttribute="height" multiplier="2:3" id="hqV-9h-TrV"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг этого фильма меньше, чем 5?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4e-5s-l82" userLabel="Question Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4e-5s-l82" userLabel="Question Label">
                                         <rect key="frame" x="0.0" y="624.5" width="374" height="99.5"/>
                                         <fontDescription key="fontDescription" name="YSDisplay-Bold" family="YS Display" pointSize="23"/>
                                         <color key="textColor" name="White"/>
@@ -125,10 +128,10 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="Tlm-PH-imY" id="h6s-vs-t3m"/>
-                        <outlet property="indexLabel" destination="gZv-DT-0UM" id="cRZ-Ob-nko"/>
+                        <outlet property="counterLabel" destination="gZv-DT-0UM" id="umK-Wb-p6w"/>
                         <outlet property="noButton" destination="D6w-xB-n2M" id="y2h-q9-9He"/>
-                        <outlet property="previewImageView" destination="6FF-j9-xuY" id="Qhh-BT-Cnh"/>
-                        <outlet property="questionLabel" destination="e4e-5s-l82" id="evT-cU-h7d"/>
+                        <outlet property="previewImageView" destination="6FF-j9-xuY" id="SAd-A7-XBr"/>
+                        <outlet property="questionLabel" destination="e4e-5s-l82" id="M55-P1-Rnm"/>
                         <outlet property="yesButton" destination="pBA-2w-tLZ" id="UjO-GD-SSM"/>
                     </connections>
                 </viewController>
