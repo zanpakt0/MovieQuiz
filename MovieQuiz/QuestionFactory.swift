@@ -14,7 +14,8 @@ final class QuestionFactory {
 extension QuestionFactory: QuestionFactoryProtocol {
     func requestNextQuestion() {
         DispatchQueue.global().async { [weak self] in
-            guard let movie = self?.movies.randomElement() else {
+            guard let movie = self?.movies.randomElement()
+            else {
                 DispatchQueue.main.async {
                     self?.delegate?.didFailToLoadData(
                         with: SimpleError("нет фильмов для вопроса")
@@ -27,10 +28,11 @@ extension QuestionFactory: QuestionFactoryProtocol {
                 print("Failed to load image")
             }
             let rating = Float(movie.rating) ?? 0
-            let text = "Рейтинг этого фильма больше чем 6?"
-            let correctAnswer = rating > 6
+            let randomCount = Int.random(in: 5...9)
+            let text = "Рейтинг этого фильма больше чем \(randomCount)?"
+            let correctAnswer = rating > Float(randomCount)
             let question = QuizQuestion(
-                image: imageData ?? Data(),
+                imageData: imageData,
                 text: text,
                 correctAnswer: correctAnswer
             )
@@ -42,19 +44,16 @@ extension QuestionFactory: QuestionFactoryProtocol {
         }
     }
 }
-
 extension QuestionFactory {
     func loadData() {
         moviesLoader.loadMovies { [weak self] result in
             DispatchQueue.main.async {
-                guard let self else {
-                    return
-                }
+                guard let self = self else { return }
                 switch result {
-                case let .success(mostPopularMovies):
+                case .success(let mostPopularMovies):
                     self.movies = mostPopularMovies.items
                     self.delegate?.didLoadDataFromServer()
-                case let .failure(error):
+                case .failure(let error):
                     self.delegate?.didFailToLoadData(with: error)
                 }
             }
